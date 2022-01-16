@@ -1,5 +1,20 @@
 .app {
+  position: relative;
   width: 1100px;
   margin: 0 auto;
 }
 
+.characters__content{
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 650px 425px;
+  grid-column-gap: 25px;
+  align-items: start;
+}
+
+.bg-decoration{
+  position: absolute;
+  right: -161px;
+  bottom: -90px;
+  z-index: -10;
+}
