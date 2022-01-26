@@ -28,3 +28,19 @@ a{
 h1, h2, h3, h4, h5, h6{
     margin: 0;
 }
+
+.pulse{
+  animation: pulse 2s ease-in-out .5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1
+  }
+  50% {
+    opacity: .4
+  }
+  100% {
+    opacity: 1
+  }
+}

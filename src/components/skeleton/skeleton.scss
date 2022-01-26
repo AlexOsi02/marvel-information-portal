@@ -1,0 +1,32 @@
+.skeleton {
+  &__title {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  &__header {
+    margin-top: 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #C4C4C4;
+  }
+
+  &__field {
+    margin-top: 15px;
+    width: 375px;
+    height: 35px;
+    background-color: #C4C4C4;
+    &_mini {
+      width: 326px;
+      height: 16px;
+      background-color: #C4C4C4;
+    }
+  }
+}
