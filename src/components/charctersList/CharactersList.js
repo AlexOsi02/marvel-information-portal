@@ -69,7 +69,6 @@ class CharactersList extends Component {
 
 
     renderItems(arr) {
-        console.log(this.itemsRef)
         const items = arr.map((item, i) => {
             let imgStyle = {'objectFit': 'cover'}
 
