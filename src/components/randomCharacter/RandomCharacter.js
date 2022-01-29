@@ -1,79 +1,52 @@
-import {Component} from "react";
-import MarvelService from "../../services/MarvelService";
+import {useEffect, useState} from "react";
 import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../errorMessage/ErrorMessage";
+import useMarvelService from "../../services/MarvelService";
+
+import './randomCharacter.scss'
 
 import mjolnir from '../../resources/img/decoration.png'
 
-import './randomCharacter.scss'
-import ErrorMessage from "../errorMessage/ErrorMessage";
+const RandomCharacter = () => {
+    const [char, setChar] = useState({});
+    const {loading, error, getCharacter, clearError} = useMarvelService();
 
-class RandomCharacter extends Component {
-    state = {
-        char: {},
-        loading: true,
-        error: false
+    useEffect(() => {
+        updateChar();
+    }, [])
+
+    const onCharLoaded = (char) => {
+        setChar(char);
     }
 
-    componentDidMount() {
-        this.updateChar();
-    }
-
-    marvelService = new MarvelService();
-
-    onCharLoading = () => {
-        this.setState({
-            loading: true,
-            error: false
-        })
-    }
-
-    onCharLoaded = (char) => {
-        this.setState({
-            char,
-            loading: false
-        })
-    }
-
-    onError = () => {
-        this.setState({
-            loading: false,
-            error: true
-        })
-    }
-
-    updateChar = () => {
+    const updateChar = () => {
+        clearError();
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        this.onCharLoading();
-        this.marvelService
-            .getCharacter(id)
-            .then(this.onCharLoaded)
-            .catch(this.onError)
+        getCharacter(id)
+            .then(onCharLoaded)
     }
 
-    render() {
-        const {char, loading, error} = this.state;
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error) ? <View char={char}/> : null;
-        return (
-            <div className="randomCharacter">
-                {errorMessage}
-                {spinner}
-                {content}
-                <div className="randomCharacter__random">
-                    <p className="randomCharacter__title">Random character for today!
-                        <br/>Do you want to get to know him better?</p>
-                    <p className="randomCharacter__title">Or choose another one</p>
-                    <button
-                        className="button button__main"
-                        onClick={() => (this.updateChar())}>
-                        <div className="inner">TRY IT</div>
-                    </button>
-                    <img src={mjolnir} alt="mjolnir" className="randomCharacter__decoration"/>
-                </div>
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading ? <Spinner/> : null;
+    const content = !(loading || error) ? <View char={char}/> : null;
+    return (
+        <div className="randomCharacter">
+            {errorMessage}
+            {spinner}
+            {content}
+            <div className="randomCharacter__random">
+                <p className="randomCharacter__title">Random character for today!
+                    <br/>Do you want to get to know him better?</p>
+                <p className="randomCharacter__title">Or choose another one</p>
+                <button
+                    className="button button__main"
+                    onClick={() => (updateChar())}>
+                    <div className="inner">TRY IT</div>
+                </button>
+                <img src={mjolnir} alt="mjolnir" className="randomCharacter__decoration"/>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const View = ({char}) => {
@@ -81,8 +54,8 @@ const View = ({char}) => {
 
     let imgStyle = {'objectFit': 'cover'}
 
-    if(thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"){
-        imgStyle = {'objectFit': 'contain' };
+    if (thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg") {
+        imgStyle = {'objectFit': 'contain'};
     }
     return (
         <div className="randomCharacter__block">
