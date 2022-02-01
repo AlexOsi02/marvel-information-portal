@@ -1,31 +1,40 @@
 @import '../../style/variables.scss';
 
 .app {
-    &__header{
-      display: flex;
-      justify-content: space-between;
-    }
-    &__title{
-        margin-top: 50px;
-        font-size: 28px;
-        span{
-            color: $main-color;
-        }
-    }
-    &__menu{
-        margin-top: 55px;
-        ul{
-            display: flex;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 32px;
-            li{
-                margin: 0 8px;
-                a:hover{
-                    color: $main-color;
-                }
-            }
-        }
-    }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
 
+  &__title {
+    margin-top: 50px;
+    font-size: 28px;
+
+    span {
+      color: $main-color;
+    }
+  }
+
+  &__menu {
+    margin-top: 55px;
+
+    ul {
+      display: flex;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 32px;
+
+      li {
+        margin: 0 8px;
+
+        a:hover {
+          color: $main-color;
+        }
+      }
+    }
+  }
+  .selected{
+    color: $main-color;
+  }
 }

@@ -1,7 +1,6 @@
 @import "../../style/variables";
 
 .randomCharacter {
-  margin-top: 50px;
   display: grid;
   align-items: center;
   grid-template-columns: repeat(2, 50%);
