@@ -4,6 +4,7 @@ import RandomCharacter from "../randomCharacter/RandomCharacter";
 import CharactersList from "../charctersList/CharactersList";
 import CharacterInfo from "../characterInfo/CharacterInfo";
 import vision from "../../resources/img/bg-asset.png";
+import CharacterSearchForm from "../characterSearchForm/CharacterSearchForm";
 
 
 const MainPage = () => {
@@ -21,9 +22,12 @@ const MainPage = () => {
                 <ErrorBoundary>
                     <CharactersList onCharSelected={onCharSelected}/>
                 </ErrorBoundary>
-                <ErrorBoundary>
-                    <CharacterInfo charId={selectedChar}/>
-                </ErrorBoundary>
+                <div>
+                    <ErrorBoundary>
+                        <CharacterInfo charId={selectedChar}/>
+                    </ErrorBoundary>
+                    <CharacterSearchForm/>
+                </div>
             </div>
             <img className="bg-decoration" src={vision} alt="vision"/>
         </main>
