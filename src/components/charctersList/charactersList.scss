@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.charactersList{
+.charactersList {
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -8,23 +8,45 @@
     grid-row-gap: 30px;
     grid-column-gap: 25px;
   }
-  &__item{
+
+  &__item {
     background-color: $dark;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: 0.3s all;
-    img{
+
+    img {
       width: 200px;
       height: 200px;
       object-fit: cover;
       //transform: translate(-15px, -15px);;
     }
-    &_selected{
+
+    &_selected {
       transform: translateY(-8px);
       box-shadow: 0 5px 20px $main-color;
     }
+
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transition: opacity 500ms ease-in;
+    }
   }
-  &__name{
+
+  &__name {
     color: #ffffff;
     font-weight: bold;
     font-size: 22px;
@@ -32,3 +54,4 @@
     padding: 15px;
   }
 }
+

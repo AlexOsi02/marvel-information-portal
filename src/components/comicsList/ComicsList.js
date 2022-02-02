@@ -3,6 +3,7 @@ import useMarvelService from "../../services/MarvelService";
 import {useEffect, useState} from "react";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
+import {Link} from "react-router-dom";
 
 const ComicsList = () => {
     const [comicsList, setComicsList] = useState([]);
@@ -56,11 +57,11 @@ const View = ({comicsList}) =>{
         <ul className="comics__grid">
             {comicsList.map((comics, i) => (
                 <li className="comics__item" key={i}>
-                    <a href="#">
+                    <Link to={`/comics/${comics.id}`}>
                         <img src={comics.thumbnail} alt="comics" className="comics__item-img"/>
                         <div className="comics__item-name">{comics.title}</div>
                         <div className="comics__item-price">{comics.price}</div>
-                    </a>
+                    </Link>
                 </li>
             ))}
         </ul>
